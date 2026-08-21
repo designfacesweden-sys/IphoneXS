@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: iphonexs-hub
+    runtime: node
+    plan: starter
+    buildCommand: cd server && npm install
+    startCommand: cd server && node index.js
+    envVars:
+      - key: ANTHROPIC_API_KEY
+        sync: false

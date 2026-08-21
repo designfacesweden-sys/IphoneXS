@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Economy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#0b0f0d" />
+  <link rel="stylesheet" href="/css/shared.css" />
+  <link rel="stylesheet" href="/apps/economy/css/style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <header class="topbar">
+      <a class="home-link" href="/" aria-label="Back to Home">‹ Home</a>
+      <div class="topbar-row">
+        <div class="clock" id="clock">--:--</div>
+        <div class="title">ECONOMY</div>
+      </div>
+    </header>
+
+    <main id="screen-month" class="screen active">
+      <div class="month-nav">
+        <button id="prev-month" class="nav-btn" type="button" aria-label="Previous month">‹</button>
+        <div class="month-label" id="month-label">—</div>
+        <button id="next-month" class="nav-btn" type="button" aria-label="Next month">›</button>
+      </div>
+      <div class="month-total" id="month-total">0 kr</div>
+
+      <ul id="tx-list" class="tx-list"></ul>
+      <div id="month-empty" class="empty-state" hidden>Nothing added this month yet.</div>
+    </main>
+
+    <main id="screen-add" class="screen">
+      <div class="section-label">Add entry</div>
+
+      <label class="field-label" for="entry-name">Name</label>
+      <input type="text" id="entry-name" class="text-input" placeholder="e.g. Rent, Electricity, Groceries" />
+
+      <label class="field-label" for="entry-amount">Amount (SEK)</label>
+      <input type="number" id="entry-amount" class="date-input" inputmode="decimal" min="0" step="1" />
+
+      <label class="field-label" for="entry-date">Date</label>
+      <input type="date" id="entry-date" class="date-input" />
+
+      <button id="save-entry" class="big-button">Save</button>
+    </main>
+
+    <main id="screen-yearly" class="screen">
+      <div class="month-nav">
+        <button id="prev-year" class="nav-btn" type="button" aria-label="Previous year">‹</button>
+        <div class="month-label" id="year-label">—</div>
+        <button id="next-year" class="nav-btn" type="button" aria-label="Next year">›</button>
+      </div>
+
+      <div class="report-grid">
+        <div class="report-tile">
+          <div class="report-value" id="year-total">0 kr</div>
+          <div class="report-label">Year total</div>
+        </div>
+        <div class="report-tile">
+          <div class="report-value" id="year-average">0 kr</div>
+          <div class="report-label">Avg / month</div>
+        </div>
+      </div>
+
+      <div id="year-breakdown" class="year-breakdown"></div>
+    </main>
+
+    <nav class="tabbar">
+      <button class="tab active" data-screen="month">Month</button>
+      <button class="tab" data-screen="add">Add</button>
+      <button class="tab" data-screen="yearly">Yearly</button>
+    </nav>
+
+  </div>
+
+  <script type="module" src="/apps/economy/js/app.js"></script>
+</body>
+</html>

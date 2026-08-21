@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Fridge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#0b0f0d" />
+  <link rel="stylesheet" href="/css/shared.css" />
+  <link rel="stylesheet" href="/apps/fridge/css/style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <header class="topbar">
+      <a class="home-link" href="/" aria-label="Back to Home">‹ Home</a>
+      <div class="topbar-row">
+        <div class="clock" id="clock">--:--</div>
+        <div class="title">FRIDGE</div>
+      </div>
+    </header>
+
+    <main id="screen-inventory" class="screen active">
+      <div class="section-label">In the fridge</div>
+      <ul id="inventory-list" class="inventory-list"></ul>
+      <div id="inventory-empty" class="empty-state" hidden>
+        Nothing scanned yet. Tap Scan to add something.
+      </div>
+    </main>
+
+    <main id="screen-scan" class="screen">
+      <div id="scan-idle" class="scan-idle">
+        <button id="start-scan" class="big-button">Start Camera</button>
+        <p class="hint">Point the camera at a barcode</p>
+      </div>
+      <div id="reader" class="reader" hidden></div>
+      <div id="scan-status" class="scan-status" hidden></div>
+      <div id="scan-error" class="scan-error" hidden></div>
+      <div id="scan-result" class="scan-result" hidden>
+        <img id="result-image" alt="" />
+        <div class="result-name" id="result-name">—</div>
+        <div class="result-brand" id="result-brand"></div>
+
+        <label class="field-label" for="expiry-input">Best before (estimated)</label>
+        <input type="date" id="expiry-input" class="date-input" />
+        <button id="scan-date-btn" class="ghost-button" type="button">Scan printed date</button>
+
+        <div id="date-capture" class="date-capture" hidden>
+          <div id="date-capture-reader" class="reader"></div>
+          <div id="date-capture-status" class="scan-status"></div>
+          <button id="date-capture-shot" class="big-button" type="button">Capture</button>
+          <button id="date-capture-cancel" class="ghost-button" type="button">Cancel</button>
+        </div>
+
+        <label class="field-label" for="price-input">Price (SEK, estimated)</label>
+        <input type="number" id="price-input" class="date-input" inputmode="numeric" min="0" step="1" />
+
+        <div class="result-actions">
+          <button id="save-item" class="big-button">Save to fridge</button>
+          <button id="cancel-item" class="ghost-button">Cancel</button>
+        </div>
+      </div>
+    </main>
+
+    <main id="screen-recipes" class="screen">
+      <div class="section-label">What can I cook?</div>
+      <input type="text" id="preferences-input" class="text-input"
+             placeholder="Preferences e.g. vegetarian, high protein" />
+      <button id="get-recipes" class="big-button">Suggest recipes</button>
+      <div id="recipes-loading" class="hint" hidden>Thinking…</div>
+      <div id="recipes-list" class="recipes-list"></div>
+    </main>
+
+    <main id="screen-report" class="screen">
+      <div class="section-label">This week</div>
+      <div class="report-grid">
+        <div class="report-tile">
+          <div class="report-value" id="report-spend">0 kr</div>
+          <div class="report-label">Grocery spend</div>
+        </div>
+        <div class="report-tile">
+          <div class="report-value" id="report-score">—</div>
+          <div class="report-label">Healthy meter</div>
+        </div>
+      </div>
+      <div class="report-sub" id="report-items-count"></div>
+      <div id="report-breakdown" class="report-breakdown"></div>
+    </main>
+
+    <nav class="tabbar">
+      <button class="tab active" data-screen="inventory">Fridge</button>
+      <button class="tab" data-screen="scan">Scan</button>
+      <button class="tab" data-screen="recipes">Recipes</button>
+      <button class="tab" data-screen="report">Report</button>
+    </nav>
+
+  </div>
+
+  <script type="module" src="https://fastly.jsdelivr.net/npm/barcode-detector@3/dist/es/polyfill.min.js"></script>
+  <script type="module" src="/apps/fridge/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Chores</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#0b0f0d" />
+  <link rel="stylesheet" href="/css/shared.css" />
+  <link rel="stylesheet" href="/apps/chores/css/style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <header class="topbar">
+      <a class="home-link" href="/" aria-label="Back to Home">‹ Home</a>
+      <div class="topbar-row">
+        <div class="clock" id="clock">--:--</div>
+        <div class="title">CHORES</div>
+      </div>
+    </header>
+
+    <main id="screen-week" class="screen active">
+      <div class="month-nav">
+        <button id="prev-week" class="nav-btn" type="button" aria-label="Previous week">‹</button>
+        <div class="month-label" id="week-label">—</div>
+        <button id="next-week" class="nav-btn" type="button" aria-label="Next week">›</button>
+      </div>
+
+      <ul id="week-list" class="chore-list"></ul>
+      <div id="week-empty" class="empty-state" hidden>Add household members and chores first.</div>
+    </main>
+
+    <main id="screen-people" class="screen">
+      <div class="section-label">Household</div>
+      <div class="add-row">
+        <input type="text" id="person-name" class="text-input" placeholder="Name" />
+        <button id="add-person" class="ghost-button" type="button">Add</button>
+      </div>
+      <ul id="people-list" class="simple-list"></ul>
+    </main>
+
+    <main id="screen-chores" class="screen">
+      <div class="section-label">Chores</div>
+      <div class="add-row">
+        <input type="text" id="chore-name" class="text-input" placeholder="e.g. Vacuum" />
+        <button id="add-chore" class="ghost-button" type="button">Add</button>
+      </div>
+      <ul id="chores-list" class="simple-list"></ul>
+    </main>
+
+    <nav class="tabbar">
+      <button class="tab active" data-screen="week">This Week</button>
+      <button class="tab" data-screen="people">People</button>
+      <button class="tab" data-screen="chores">Chores</button>
+    </nav>
+
+  </div>
+
+  <script type="module" src="/apps/chores/js/app.js"></script>
+</body>
+</html>

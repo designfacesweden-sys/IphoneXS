@@ -1,0 +1,99 @@
+/* Fridge-specific screens. Shared chrome (topbar, tabbar, buttons, inputs)
+   lives in /css/shared.css. */
+
+.inventory-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.inventory-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #131a17;
+  border-radius: 14px;
+  padding: 12px 14px;
+  border-left: 4px solid #3a4a42;
+}
+.inventory-item.status-fresh { border-left-color: #3fbf6a; }
+.inventory-item.status-soon { border-left-color: #e0a72e; }
+.inventory-item.status-urgent { border-left-color: #e0642e; }
+.inventory-item.status-expired { border-left-color: #e0392e; }
+
+.inventory-item img { width: 44px; height: 44px; object-fit: cover; border-radius: 8px; background: #222; flex-shrink: 0; }
+.inventory-item .info { flex: 1; min-width: 0; }
+.inventory-item .name { font-size: 16px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.inventory-item .expiry { font-size: 13px; color: #8b978f; margin-top: 2px; }
+.inventory-item .remove { background: none; border: none; color: #5c6a63; font-size: 20px; padding: 6px 10px; }
+
+.scan-idle { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 60vh; }
+.reader { border-radius: 16px; overflow: hidden; }
+.reader video { width: 100%; display: block; }
+.date-capture { margin-top: 10px; }
+.date-capture .reader video { max-height: 200px; width: 100%; object-fit: cover; }
+.scan-status {
+  font-size: 12px;
+  color: #6b8a7a;
+  text-align: center;
+  margin-top: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.scan-error {
+  background: #2a1512;
+  border: 1px solid #5a2c26;
+  color: #e0a89e;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+.scan-result { background: #131a17; border-radius: 16px; padding: 16px; margin-top: 12px; }
+.scan-result img { width: 100%; max-height: 160px; object-fit: contain; border-radius: 10px; background: #0b0f0d; }
+.result-name { font-size: 19px; font-weight: 600; margin-top: 10px; }
+.result-brand { font-size: 14px; color: #8b978f; }
+
+.recipes-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+.recipe-card { background: #131a17; border-radius: 14px; padding: 14px 16px; }
+.recipe-card .r-title { font-size: 17px; font-weight: 600; }
+.recipe-card .r-meta { font-size: 13px; color: #8b978f; margin: 4px 0 8px; }
+.recipe-card .r-section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #5c6a63; margin-top: 10px; }
+.recipe-card ul { margin: 4px 0 0; padding-left: 18px; font-size: 14px; }
+.recipe-card li { margin-bottom: 3px; }
+
+.report-grid { display: flex; gap: 12px; }
+.report-tile {
+  flex: 1;
+  background: #131a17;
+  border-radius: 14px;
+  padding: 18px 14px;
+  text-align: center;
+}
+.report-value { font-size: 26px; font-weight: 700; }
+.report-label { font-size: 13px; color: #8b978f; margin-top: 4px; }
+.report-sub { font-size: 13px; color: #5c6a63; margin-top: 14px; text-align: center; }
+.report-breakdown { display: flex; flex-direction: column; gap: 8px; margin-top: 18px; }
+.report-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #131a17;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 14px;
+}
+.report-row .r-name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-right: 10px; }
+.report-row .r-price { color: #8b978f; margin-right: 10px; }
+.nutri-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #06140b;
+}
+.nutri-A { background: #2f9e4f; }
+.nutri-B { background: #7fbf3f; }
+.nutri-C { background: #e0a72e; }
+.nutri-D { background: #e0742e; }
+.nutri-E { background: #e0392e; }
+.nutri-unknown { background: #3a4a42; color: #8b978f; }

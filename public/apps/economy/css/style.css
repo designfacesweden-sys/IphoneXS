@@ -1,0 +1,58 @@
+/* Economy-specific screens. Shared chrome lives in /css/shared.css. */
+
+.month-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+.nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  border: 1px solid #2a352f;
+  background: #131a17;
+  color: #eef2ef;
+  font-size: 20px;
+}
+.month-label { font-size: 17px; font-weight: 600; }
+
+.month-total {
+  font-size: 34px;
+  font-weight: 700;
+  text-align: center;
+  margin: 10px 0 20px;
+}
+
+.tx-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.tx-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #131a17;
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+.tx-item .info { flex: 1; min-width: 0; }
+.tx-item .name { font-size: 16px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tx-item .date { font-size: 13px; color: #8b978f; margin-top: 2px; }
+.tx-item .amount { font-size: 16px; font-weight: 600; color: #eef2ef; white-space: nowrap; }
+.tx-item .remove { background: none; border: none; color: #5c6a63; font-size: 20px; padding: 6px 10px; }
+
+.year-breakdown { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.year-row {
+  background: #131a17;
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+.year-row .yr-top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+.year-row .yr-month { color: #d5ded9; }
+.year-row .yr-amount { color: #8b978f; }
+.year-row.is-current .yr-month { color: #3fbf6a; font-weight: 600; }
+.year-bar-track { height: 6px; border-radius: 3px; background: #1a231e; overflow: hidden; }
+.year-bar-fill { height: 100%; background: #3fbf6a; border-radius: 3px; }
