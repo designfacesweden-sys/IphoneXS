@@ -7,17 +7,47 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="theme-color" content="#0b0f0d" />
+  <meta name="theme-color" content="#2a2018" />
   <link rel="manifest" href="/manifest.json" />
   <link rel="stylesheet" href="/css/home.css" />
 </head>
 <body>
   <div id="home">
-    <header class="topbar">
-      <div class="clock" id="clock">--:--</div>
-    </header>
 
-    <main class="grid" id="app-grid"></main>
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <svg class="house-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 11.5 12 4l9 7.5"/>
+          <path d="M5.5 10v9.5h13V10"/>
+        </svg>
+        <span class="sidebar-title">Home</span>
+      </div>
+
+      <div class="sidebar-item active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 11.5 12 4l9 7.5"/>
+          <path d="M5.5 10v9.5h13V10"/>
+        </svg>
+        <span>Home</span>
+      </div>
+
+      <div class="sidebar-section-title">Apps</div>
+      <nav id="sidebar-apps" class="sidebar-nav"></nav>
+    </aside>
+
+    <main class="content">
+      <div class="content-topbar">
+        <div class="clock" id="clock">--:--</div>
+      </div>
+
+      <h1 class="page-title">My Home</h1>
+
+      <div class="chip-row" id="chip-row"></div>
+
+      <div class="section-header">Apps</div>
+      <div class="card-grid" id="card-grid"></div>
+    </main>
+
   </div>
 
   <script type="module" src="/js/home.js"></script>
