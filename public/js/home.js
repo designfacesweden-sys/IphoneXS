@@ -34,6 +34,20 @@ const apps = [
       <line x1="12" y1="19" x2="20" y2="19"/>
     </svg>`,
   },
+  {
+    name: 'Remote',
+    // Runs on the local LAN server, not Render — TVs are only reachable
+    // from a device on the same home WiFi, never from the internet.
+    href: 'http://192.168.1.181:3000/apps/remote/',
+    gradient: 'linear-gradient(160deg, #b06fff, #6a2fbf)',
+    icon: `<svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="7" y="2" width="10" height="20" rx="3"/>
+      <circle cx="12" cy="6.5" r="1.1" fill="white" stroke="none"/>
+      <line x1="9.5" y1="11" x2="14.5" y2="11"/>
+      <line x1="9.5" y1="14.5" x2="14.5" y2="14.5"/>
+      <line x1="9.5" y1="18" x2="14.5" y2="18"/>
+    </svg>`,
+  },
 ];
 
 const grid = document.getElementById('app-grid');

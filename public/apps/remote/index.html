@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Remote</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="theme-color" content="#0b0f0d" />
+  <link rel="stylesheet" href="/css/shared.css" />
+  <link rel="stylesheet" href="/apps/remote/css/style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <header class="topbar">
+      <a class="home-link" id="home-link" href="#" aria-label="Back to Home">‹ Home</a>
+      <div class="topbar-row">
+        <div class="clock" id="clock">--:--</div>
+        <div class="title">REMOTE</div>
+      </div>
+    </header>
+
+    <main id="screen-control" class="screen active">
+      <div class="tv-select" id="tv-select"></div>
+      <div id="control-empty" class="empty-state" hidden>Add a TV under Setup first.</div>
+
+      <div id="control-body" class="control-body" hidden>
+        <div class="power-row">
+          <button class="power-btn on" id="power-on" type="button">Power On</button>
+          <button class="power-btn off" id="power-off" type="button">Power Off</button>
+        </div>
+
+        <div class="dpad">
+          <button class="dpad-btn up" data-btn="UP" type="button">▲</button>
+          <button class="dpad-btn left" data-btn="LEFT" type="button">◀</button>
+          <button class="dpad-btn ok" data-btn="ENTER" type="button">OK</button>
+          <button class="dpad-btn right" data-btn="RIGHT" type="button">▶</button>
+          <button class="dpad-btn down" data-btn="DOWN" type="button">▼</button>
+        </div>
+
+        <div class="nav-row">
+          <button class="nav-chip" data-btn="BACK" type="button">Back</button>
+          <button class="nav-chip" data-btn="HOME" type="button">Home</button>
+          <button class="nav-chip" data-btn="EXIT" type="button">Exit</button>
+        </div>
+
+        <div class="volume-row">
+          <button class="vol-btn" id="vol-down" type="button">－</button>
+          <button class="vol-btn mute" id="vol-mute" type="button">Mute</button>
+          <button class="vol-btn" id="vol-up" type="button">＋</button>
+        </div>
+
+        <div id="control-status" class="scan-status"></div>
+      </div>
+    </main>
+
+    <main id="screen-setup" class="screen">
+      <div class="section-label">TVs</div>
+      <div class="add-row">
+        <input type="text" id="tv-name" class="text-input" placeholder="Name, e.g. Living Room" />
+      </div>
+      <div class="add-row">
+        <input type="text" id="tv-host" class="text-input" placeholder="TV IP address, e.g. 192.168.1.50" />
+      </div>
+      <div class="add-row">
+        <input type="text" id="tv-mac" class="text-input" placeholder="MAC address (optional, for Power On)" />
+        <button id="add-tv" class="ghost-button" type="button">Add</button>
+      </div>
+
+      <ul id="tv-list" class="simple-list"></ul>
+      <p class="hint">First connection to a new TV shows a pairing prompt on the TV screen — accept it there once.</p>
+    </main>
+
+    <nav class="tabbar">
+      <button class="tab active" data-screen="control">Remote</button>
+      <button class="tab" data-screen="setup">Setup</button>
+    </nav>
+
+  </div>
+
+  <script type="module" src="/apps/remote/js/app.js"></script>
+</body>
+</html>

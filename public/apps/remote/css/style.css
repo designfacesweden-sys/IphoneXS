@@ -1,0 +1,101 @@
+/* Remote-specific screens. Shared chrome lives in /css/shared.css. */
+
+.tv-select { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+.tv-chip {
+  padding: 10px 16px;
+  border-radius: 20px;
+  border: 1px solid #2a352f;
+  background: #131a17;
+  color: #8b978f;
+  font-size: 14px;
+  font-weight: 600;
+}
+.tv-chip.active { border-color: #3fbf6a; color: #3fbf6a; background: #16241b; }
+
+.control-body { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+
+.power-row { display: flex; gap: 10px; width: 100%; }
+.power-btn {
+  flex: 1;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+}
+.power-btn.on { background: #3fbf6a; color: #06140b; }
+.power-btn.off { background: #2a1512; color: #e0a89e; border: 1px solid #5a2c26; }
+
+.dpad {
+  display: grid;
+  grid-template-columns: 64px 64px 64px;
+  grid-template-rows: 64px 64px 64px;
+  gap: 8px;
+  place-items: center;
+}
+.dpad-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  border: 1px solid #2a352f;
+  background: #131a17;
+  color: #eef2ef;
+  font-size: 20px;
+}
+.dpad-btn:active { background: #1c2a22; }
+.dpad-btn.up { grid-column: 2; grid-row: 1; }
+.dpad-btn.left { grid-column: 1; grid-row: 2; }
+.dpad-btn.ok { grid-column: 2; grid-row: 2; font-size: 15px; font-weight: 700; background: #1c2a22; border-color: #3fbf6a; color: #6fe0a0; }
+.dpad-btn.right { grid-column: 3; grid-row: 2; }
+.dpad-btn.down { grid-column: 2; grid-row: 3; }
+
+.nav-row { display: flex; gap: 10px; width: 100%; }
+.nav-chip {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #2a352f;
+  background: #131a17;
+  color: #d5ded9;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.volume-row { display: flex; gap: 10px; width: 100%; align-items: center; }
+.vol-btn {
+  flex: 1;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid #2a352f;
+  background: #131a17;
+  color: #eef2ef;
+  font-size: 18px;
+  font-weight: 700;
+}
+.vol-btn.mute { font-size: 14px; color: #8b978f; }
+
+.simple-list { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.simple-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #131a17;
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.simple-item .name { flex: 1; font-size: 15px; }
+.simple-item .host { font-size: 12px; color: #5c6a63; }
+.simple-item .test { background: none; border: 1px solid #2a352f; border-radius: 8px; color: #8b978f; font-size: 12px; padding: 6px 10px; }
+.simple-item .remove { background: none; border: none; color: #5c6a63; font-size: 20px; padding: 4px 10px; }
+
+.add-row { display: flex; gap: 8px; align-items: flex-start; margin-top: 10px; }
+.add-row:first-of-type { margin-top: 0; }
+.add-row .text-input { flex: 1; }
+.add-row .ghost-button { width: auto; padding: 12px 18px; margin-top: 0; white-space: nowrap; }
+
+.scan-status {
+  font-size: 12px;
+  color: #6b8a7a;
+  text-align: center;
+  min-height: 16px;
+}

@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import Anthropic from '@anthropic-ai/sdk';
+import * as tv from './tvControl.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC_DIR = path.join(__dirname, '..', 'public');
@@ -95,6 +96,87 @@ Suggest 3 recipes that primarily use what's already in the fridge, prioritizing 
   } catch (err) {
     console.error('Recipe generation failed:', err);
     res.status(500).json({ error: 'Recipe generation failed.' });
+  }
+});
+
+// TV control — only meaningful when this server is running on the home LAN
+// (the Render deployment can't reach these devices, so these routes are
+// simply never called there).
+app.get('/api/tv', (_req, res) => {
+  res.json({ tvs: tv.listTVs() });
+});
+
+app.post('/api/tv', (req, res) => {
+  const { name, host, mac } = req.body || {};
+  if (!name || !host) return res.status(400).json({ error: 'name and host are required.' });
+  res.json(tv.addTV({ name, host, mac }));
+});
+
+app.delete('/api/tv/:id', (req, res) => {
+  tv.removeTV(req.params.id);
+  res.json({ ok: true });
+});
+
+app.post('/api/tv/:id/connect', async (req, res) => {
+  try {
+    await tv.testConnect(req.params.id);
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message || String(err) });
+  }
+});
+
+app.post('/api/tv/:id/power-on', async (req, res) => {
+  try {
+    await tv.powerOn(req.params.id);
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message || String(err) });
+  }
+});
+
+app.post('/api/tv/:id/power-off', async (req, res) => {
+  try {
+    await tv.powerOff(req.params.id);
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message || String(err) });
+  }
+});
+
+app.post('/api/tv/:id/volume', async (req, res) => {
+  try {
+    await tv.setVolume(req.params.id, req.body?.delta || 1);
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message || String(err) });
+  }
+});
+
+app.post('/api/tv/:id/mute', async (req, res) => {
+  try {
+    await tv.mute(req.params.id);
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message || String(err) });
+  }
+});
+
+app.post('/api/tv/:id/button', async (req, res) => {
+  try {
+    await tv.pressButton(req.params.id, req.body?.name);
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message || String(err) });
+  }
+});
+
+app.post('/api/tv/:id/input', async (req, res) => {
+  try {
+    await tv.switchInput(req.params.id, req.body?.inputId);
+    res.json({ ok: true });
+  } catch (err) {
+    res.status(500).json({ error: err.message || String(err) });
   }
 });
 
